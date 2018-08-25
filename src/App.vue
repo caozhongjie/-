@@ -1,29 +1,82 @@
 <template>
   <div id="app">
-    <header></header>
+    <v-header></v-header>
     <div class="tab">
-    i am table
+  <div class="tab-item">
+    <router-link to="/goods" class="tab-item-goods tab-common">商品</router-link>
+  </div>
+  <div class="tab-item">
+    <router-link to="/ratings" class="tab-item-ratings tab-common">评价</router-link>
+  </div>
+  <div class="tab-item">
+    <div class="tab-item" >
+      <router-link to="/seller" class="tab-item-seller tab-common">商家</router-link></div>
+  </div>
     </div>
     <div class="content">
-    i am content
+      <router-view></router-view>
     </div>
-
-
 
   </div>
 </template>
 
 <script>
-  import header from 'components/header/header.vue'
+import header from './components/header/header.vue'
+
+
 export default {
- components:{
-   header
- }
+  data () {
+    return{
+      seller:{}
+    }
+  },
+  created(){
+    this.$http.get('/api/seller').then((response)=>{
+      console.log(response.body.errno)
+      if(response.body.errno==0){
+        this.seller = response.body.data;
+        console.log(typeof(this.seller))
+      }
+
+    },(error)=>{
+      console.log(errot)
+    })
+
+  },
+  components: {
+    'v-header': header
+  }
 }
 </script>
 
 <style>
-#app {
+#app
+  .tab{
+    width: 100%;
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 0.5px solid rgba(7,17,27,0.1);
+  }
+  .tab-item{
+    flex: 1;
+    text-align: center;
+  }
+  .tab-common{
+    display: block;
+    font-size: 14px;
+    color: rgb(77,85,93);
+  }
+  .tab-item-goods{
 
-}
+  }
+  .tab-item-ratings{
+
+  }
+  .tab-item-seller{
+
+  }
+  .router-link-active{
+    color: rgb(240,20,20);
+  }
 </style>

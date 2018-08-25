@@ -1,11 +1,9 @@
 <template>
-<div class="header">
-  我是头1文件
-</div>
+    <div>我是商品</div>
 </template>
 
 <script>
-export default{
+export default {
 
 }
 </script>
