@@ -7,6 +7,7 @@ import goods from './components/goods/goods.vue'
 import seller from './components/seller/seller.vue'
 import ratings from './components/ratings/ratings.vue'
 import vueresource from 'vue-resource'
+import './common/stylus/icon.css'
 Vue.use(vueresource)
 Vue.use(VueRouter)
 const routes = [
