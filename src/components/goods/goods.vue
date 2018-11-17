@@ -82,6 +82,8 @@ export default {
               }
         })
       })
+      console.log(11112222)
+      console.log(foods)
           return foods
     }
 
